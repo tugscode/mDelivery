@@ -2,46 +2,61 @@
 import React from "react";
 import Buttons from "./Button.js";
 import TextInput from "./TextInput.js";
-import { NavLink, useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../css/login.css";
+import { Form } from "react-bootstrap";
+import { userService } from "../services/userService.js";
 
 const Login = () => {
-
-
-  // const history = useHistory();
-  // const routeChange = () => {
-  //   let path = "/register";
-  //   history.push(path);
-  // };
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userService
+    .userLogin({
+      email: e.target.email.value,
+      password: e.target.password.value
+    })
+    .then((res)=>{
+      res.json()
+    })
+    console.log(
+      "Login request:",
+      "Email:",
+      e.target.email.value,
+      "Password:",
+      e.target.password.value
+    );
+  };
 
   return (
-    <div className="field-contianer d-flex flex-column mt-5 mb-5 align-items-center justify-content-center">
+    <Form
+      onSubmit={handleSubmit}
+      className="field-contianer d-flex flex-column mt-5 mb-5 align-items-center justify-content-center"
+    >
       <p className="col-6 hmm fw-bold ms-2 ">нэвтрэх</p>
 
-      <TextInput type={"email"} name={"И-мэйл"} />
-      <TextInput type={"password"} name={"Нууц үг"} />
-      <NavLink className="forgotPass mb-4" to='/forget'>
-      <a className="forgotPass mb-4" href="#">
+      <TextInput id="email" type={"email"} name={"И-мэйл"} />
+      <TextInput id="password" type={"password"} name={"Нууц үг"} />
+      <NavLink className="forgotPass mb-4 faceItems" to="/forget">
+      <a className="forgotPass mb-4 " href="#" >
         Нууц үгээ мартсан уу.
       </a>
       </NavLink>
-     
-      {/* <p></p> */}
-      <Buttons class={"loginTabletView"} type={"Login"} />
-      {/* <p></p> */}
+    
+      
+      <Buttons class={"loginTabletView"} type={"submit"} name={"login"}  value={"Нэвтрэх"}/>
+
       <p className="underline">эсвэл</p>
 
-      <Link to={'/register'} className="registerButton">
+      <Link to={"/register"} className="registerButton">
         <Buttons
           className="registerButton"
           class={"loginTabletView"}
-          type={"Бүртгүүлэх"}
-        // onClick={() => routeChange()}
+          type="submit"
+          name={"register"}
+          value={"Бүртгүүлэх"}
         />
       </Link>
-    </div>
+    </Form>
   );
 };
 
