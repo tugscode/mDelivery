@@ -29,7 +29,7 @@ function Desserts() {
               price={i.price}
               sales={i.sales}
               percent={i.discountPercentage}
-
+              key={i.name}
               ingredients={i.ingredients}
             />
           );

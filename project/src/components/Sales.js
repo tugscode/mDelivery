@@ -23,6 +23,7 @@ function Sales() {
             sales={i.sales}
             percent={i.discountPercentage}
             ingredients={i.ingredients}
+            key={i.name}
           />
         ))}
       </div>

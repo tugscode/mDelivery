@@ -27,6 +27,7 @@ function Salad() {
             sales={data.sales}
             percent={data.discountPercentage}
             ingredients={data.ingredients}
+            key={data.name}
           />
         )
         )}

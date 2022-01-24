@@ -16,7 +16,12 @@ const registerUser = async (credentials) => {
         body: JSON.stringify(credentials)
     })
 }
+const userInfoStorage = (userInfo) => {
+    localStorage.setItem("token" , userInfo.token)
+    localStorage.setItem("userInfo" , JSON.stringify(userInfo.data))
+}
 export const userService = {
     userLogin,
-    registerUser
+    registerUser,
+    userInfoStorage
 }
