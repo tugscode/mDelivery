@@ -3,6 +3,7 @@ import "../css/navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, Switch } from "react-router-dom";
+import { Dropdown } from "react-bootstrap";
 import CartSidebar from "./CartSidebar";
 const HeaderMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -134,6 +135,23 @@ const HeaderMenu = () => {
                     <a href="">Нэвтрэх</a>
                   </div>
                 </NavLink>
+              </li>
+              <li>
+              <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Dropdown Button
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Хэрэглэгчийн мэдээлэл</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      Миний захиалгууд
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Гарах
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </li>
             </ul>
           </div>
