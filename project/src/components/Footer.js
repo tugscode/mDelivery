@@ -73,7 +73,7 @@ const Footer = () => {
                                 <p className="last">&copy; 2020 Mstars Foods LLC</p>
                                 <p className="inactive-2">
                                     {" "}
-                                    Зохигчийн эрх хуулиар хамгаалагдсан.
+                                    Зохиогчийн эрх хуулиар хамгаалагдсан.
                                 </p>
                             </div>
                         </div>

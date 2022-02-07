@@ -76,7 +76,7 @@ const HeaderMenu = () => {
   }
 
   const handleSelect = (e)=>{
-    if (e === "#/logOut"){
+    if (e === "#"){
       setUser(null)
       localStorage.clear()
     }
@@ -150,7 +150,7 @@ const HeaderMenu = () => {
               <li className="userBusketList">
                 {user ? (
                   <Dropdown onSelect={handleSelect} >
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <Dropdown.Toggle variant="outline-none" id="dropdown-basic">
                         {user.userName}
                     </Dropdown.Toggle>
 
@@ -164,7 +164,7 @@ const HeaderMenu = () => {
                       <Dropdown.Item href="#/action-2">
                         Миний захиалгууд
                       </Dropdown.Item>
-                      <Dropdown.Item href="#/logOut">Гарах</Dropdown.Item>
+                      <Dropdown.Item href="#">Гарах</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 ) : (

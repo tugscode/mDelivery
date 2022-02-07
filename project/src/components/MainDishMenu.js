@@ -7,9 +7,9 @@ import {fService} from "../services/fService"
 function MainDishMenu() {
   const [mainMenu, setMainMenu] = useState([]);
   useEffect(() => {
-    // fetch("../data/foods.json")
-    //   .then((response) => response.json())
-    //   .then((data) => setMainMenu(data));
+    fetch("../data/foods.json")
+      .then((response) => response.json())
+      .then((data) => setMainMenu(data));
     fService
     .getAllFood()
     .then((res)=>{
