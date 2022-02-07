@@ -35,13 +35,6 @@ const Login = () => {
         alert("falied to optain login")
       }
     })
-    console.log(
-      "Login request:",
-      "Email:",
-      e.target.email.value,
-      "Password:",
-      e.target.password.value
-    );
   };
 
   return (

@@ -5,8 +5,12 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, Switch } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import CartSidebar from "./CartSidebar";
+import { useUser } from "../contexts/UserContext";
+
 const HeaderMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [user, setUser] = useUser();
+
   let menu;
   if (showMenu) {
     menu = (
@@ -71,6 +75,13 @@ const HeaderMenu = () => {
     );
   }
 
+  const handleSelect = (e)=>{
+    if (e === "#/logOut"){
+      setUser(null)
+      localStorage.clear()
+    }
+  }
+
   return (
     <nav>
       <header className="container">
@@ -128,30 +139,42 @@ const HeaderMenu = () => {
                   <CartSidebar />
                 </div>
               </li>
-              <li className="userBusketList">
+              {/* <li className="userBusketList">
                 <NavLink to="/login">
                   <div className="userBusketElement">
                     <img src="/icons/usericon.svg" />
                     <a href="">Нэвтрэх</a>
                   </div>
                 </NavLink>
-              </li>
-              <li>
-              <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Dropdown Button
-                  </Dropdown.Toggle>
+              </li> */}
+              <li className="userBusketList">
+                {user ? (
+                  <Dropdown onSelect={handleSelect} >
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        {user.userName}
+                    </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Хэрэглэгчийн мэдээлэл</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      Миний захиалгууд
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
-                      Гарах
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                    <Dropdown.Menu>
+                      <NavLink to="/userProfile">
+                      <Dropdown.Item href="#/action-1">
+                        Хэрэглэгчийн мэдээлэл
+                      </Dropdown.Item>
+
+                      </NavLink>
+                      <Dropdown.Item href="#/action-2">
+                        Миний захиалгууд
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/logOut">Гарах</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                ) : (
+                  <NavLink to="/login">
+                    <div className="userBusketElement">
+                      <img src="/icons/usericon.svg" />
+                      <a href="">Нэвтрэх</a>
+                    </div>
+                  </NavLink>
+                )}
               </li>
             </ul>
           </div>

@@ -64,7 +64,7 @@ const TextInput = (props) => {
     );
   if (type === "text")
     defInput = (
-      <div className="input-container d-flex">ç
+      <div className="input-container d-flex">
         <Form.Control
           className="input-field"
           placeholder="Нэрээ оруулна уу"

@@ -18,6 +18,7 @@ import Privacy from './components/Privacy'
 import ForgetPassword from './components/ForgetPassword'
 import NewPassword from "./components/NewPassword";
 import OrderHistory from "./components/OrderHistory";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/forget" component={ForgetPassword} />
         <Route path="/newpassword" component={NewPassword} />
         <Route path="/orderhistory" component={OrderHistory} />
+        <Route path="/userProfile" component={UserProfile}/>
         <Route component={NotFound} />
       </Switch>
       <Footer />
