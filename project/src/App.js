@@ -19,8 +19,11 @@ import ForgetPassword from './components/ForgetPassword'
 import NewPassword from "./components/NewPassword";
 import OrderHistory from "./components/OrderHistory";
 import UserProfile from "./components/UserProfile";
-
+import { fService } from "./services/fService";
+import {useFood} from "./contexts/FoodContext"
 function App() {
+  // fService
+  // const [food , setFood] = useFood()
   
   return (
     <BrowserRouter>

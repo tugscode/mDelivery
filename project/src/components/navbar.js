@@ -6,6 +6,7 @@ import { NavLink, Switch } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import CartSidebar from "./CartSidebar";
 import { useUser } from "../contexts/UserContext";
+import SearchBar from "./SearchBar";
 
 const HeaderMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -57,7 +58,13 @@ const HeaderMenu = () => {
               <div className="dropMenuImg">
                 <img src="/icons/rounduser.svg" alt="" />
               </div>
-              <a className="dropMenuText">Хэрэглэгчийн мэдээлэл</a>
+              <NavLink className={"dropMenuText"} to="/userProfile"
+              onClick={() => {
+                setShowMenu(!showMenu);
+              }}
+              >
+                Хэрэглэгчийн мэдээлэл
+              </NavLink>
             </div>
             <img className="seeMore" src="/icons/seemore.svg" alt="#" />
           </div>
@@ -76,7 +83,7 @@ const HeaderMenu = () => {
   }
 
   const handleSelect = (e)=>{
-    if (e === "#"){
+    if (e === "/"){
       setUser(null)
       localStorage.clear()
     }
@@ -124,12 +131,13 @@ const HeaderMenu = () => {
             </li>
           </ul>
           <div className="icons">
-            <input
+            {/* <input
               className="searchBox"
               type="text"
               placeholder="&#128269; Хайх"
-            />
-            <img className="searchIcon" src="/icons/searchicon.svg" />
+            /> */}
+              <SearchBar/>
+            {/* <img className="searchIcon" src="/icons/searchicon.svg" /> */}
             <img className="mobileUser" src="/icons/mobileuser.svg" />
             <ul className="userBusket">
               <li className="userBusketList">
@@ -164,7 +172,7 @@ const HeaderMenu = () => {
                       <Dropdown.Item href="#/action-2">
                         Миний захиалгууд
                       </Dropdown.Item>
-                      <Dropdown.Item href="#">Гарах</Dropdown.Item>
+                      <Dropdown.Item href="/">Гарах</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 ) : (

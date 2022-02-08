@@ -57,3 +57,65 @@
     display: block;
 
 }
+
+
+/* search bar */
+
+.App-header1 {
+    background-color: #fff;
+    min-height: 50vh;
+    justify-content: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px !important;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    color: #171717;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 10px;
+}
+.reBorder {
+    margin-bottom: -8px !important;
+    position: absolute;
+    position: static;
+    width: 9px;
+    height: 30px;
+    left: 0px;
+    top: 0px;
+    background-color: #F17228;
+}
+.recoverPass,
+.newPass {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #171717;
+    margin-left: 10px;
+}
+.formSize {
+    border-radius: 16px !important;
+    border: 1px solid #FFD7BF !important;
+    font-size: 14px !important;
+}
+
+.searchSize {
+    padding-left: 30px !important;
+}
+.leftIconSearch {
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    margin-top: 12px;
+    margin-left: 10px !important;
+    border: none !important;
+    background: transparent !important;
+    background-image: url("/public/icons/searchButton.svg") !important;
+    background-repeat: no-repeat !important;
+    padding-top: 15px !important;
+    z-index: 10;
+}
