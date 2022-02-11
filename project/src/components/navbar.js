@@ -131,13 +131,13 @@ const HeaderMenu = () => {
             </li>
           </ul>
           <div className="icons">
-            {/* <input
+            <input
               className="searchBox"
               type="text"
               placeholder="&#128269; Хайх"
-            /> */}
-              <SearchBar/>
-            {/* <img className="searchIcon" src="/icons/searchicon.svg" /> */}
+            />
+              {/* <SearchBar/> */}
+            <img className="searchIcon" src="/icons/searchicon.svg" />
             <img className="mobileUser" src="/icons/mobileuser.svg" />
             <ul className="userBusket">
               <li className="userBusketList">
