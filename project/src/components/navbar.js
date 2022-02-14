@@ -73,7 +73,7 @@ const HeaderMenu = () => {
               <div className="dropMenuImg">
                 <img src="/icons/market.svg" alt="" />
               </div>
-              <a className="dropMenuText">Миний захиалга</a>
+              <a href="#" className="dropMenuText">Миний захиалга</a>
             </div>
             <img className="seeMore" src="/icons/seemore.svg" alt="#" />
           </div>

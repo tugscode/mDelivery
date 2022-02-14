@@ -1,5 +1,5 @@
 import {createContext , useState, useContext , useEffect} from "react"
-import { UserContext } from "./UserContext"
+import { fService } from "../services/fService"
 export const FoodContext = createContext({})
 
 export function useFood(){
@@ -7,12 +7,20 @@ export function useFood(){
 }
 
 export const FoodProvider = (props)=>{
-    const [food , setFood] = useState()
+    const [foods , setFoods] = useState([])
     useEffect(()=>{
-        const data = JSON.parse(props)
-    } , [])
+        fService
+        .getAllFood()
+        .then((response)=>response.json())
+        .then((data)=>{
+            if(data.success){
+                setFoods(data.data)
+            }
+        })
+        .finally(()=>{})
+    } ,[])
     return(
-        <FoodContext.Provider value={[food, setFood]}>
+        <FoodContext.Provider value={[foods, setFoods]}>
             {props.children}
         </FoodContext.Provider>
     )

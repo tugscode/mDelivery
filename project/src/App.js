@@ -1,4 +1,4 @@
-import React, { ModalContext } from "react";
+import React, { ModalContext ,createContext , useState, useContext , useEffect } from "react";
 import "./App.css";
 import HeaderMenu from './components/navbar'
 import Home from "./components/Home";
@@ -22,9 +22,18 @@ import UserProfile from "./components/UserProfile";
 import { fService } from "./services/fService";
 import {useFood} from "./contexts/FoodContext"
 function App() {
-  // fService
-  // const [food , setFood] = useFood()
-  
+  const [foods , setFoods] = useState([])
+    useEffect(()=>{
+        fService
+        .getAllFood()
+        .then((response)=>response.json())
+        .then((data)=>{
+            if(data.success){
+                setFoods(data.data)
+            }
+        })
+        .finally(()=>{})
+    } ,[])
   return (
     <BrowserRouter>
       <HeaderMenu />
