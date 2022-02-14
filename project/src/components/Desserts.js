@@ -3,34 +3,28 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import { Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useFood } from "../contexts/FoodContext";
 
 function Desserts() {
-  const [foods, setFoods] = useState([]);
-
-  useEffect(() => {
-    fetch("../data/foods.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setFoods(data);
-      });
-  }, []);
-
-  let desserts = foods.filter((p) => p.category === "амттан").slice(0, 4);
+  const [foods] = useFood()
+  const [desserts, setMainMenu] = useState([]);
+  useEffect(()=>{
+    setMainMenu(
+      foods
+      .filter((p)=>{
+        return p.category === "Амттан"
+      })
+      .slice(0,4)
+    )
+  },[foods])
 
   return (
     <Container>
       <div className="row">
-        {desserts.map((i) => {
+        {desserts.map((data) => {
           return (
             <Card
-              img={i.img}
-              name={i.name}
-              discountPrice={i.discountPrice}
-              price={i.price}
-              sales={i.sales}
-              percent={i.discountPercentage}
-              key={i.name}
-              ingredients={i.ingredients}
+              data = {data}
             />
           );
         })}
