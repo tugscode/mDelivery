@@ -25,6 +25,7 @@ function Salad() {
         (
           <Card
             data= {data}
+            key = {data.name}
             // img={data.img}
             // name={data.name}
             // discountPrice={data.discountPrice}

@@ -3,20 +3,15 @@ import Card from "./Card";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import queryString from "query-string";
-import Breadcrumb from "./Breadcrumb";
-import NotFound from "./NotFound";
+import Breadcrumb from "./Breadcrumb"
+import NotFound from "./NotFound"
+
+import { useFood } from "../contexts/FoodContext";
 const FoodSearch = () => {
   const { search } = useLocation();
   const foodSearch = queryString.parse(search);
-  const [foods, setFoods] = useState([]);
+  const [foods] = useFood()
 
-  useEffect(() => {
-    fetch("../data/foods.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setFoods(data);
-      });
-  }, []);
   let foundFood = foods.filter((j) =>
     j.name.toLowerCase().includes(foodSearch.q)
   );
@@ -28,21 +23,15 @@ const FoodSearch = () => {
     <div className="row">
       {foundFood.map((data, index) => {
         return (
-          <div className="col-6 col-md-3">
             <Card
-              key={index}
-              name={data.name}
-              price={data.price}
-              image={data.thumb_img}
-              discount={data.sales}
-              percentage={data.discount_percentage}
+              data={data}
+              key={data.name}
             />
-          </div>
         );
       })}
     </div>
   ) : (
-    <NotFound />
+    <NotFound/>
   );
 
   return (

@@ -19,6 +19,7 @@ import ForgetPassword from './components/ForgetPassword'
 import NewPassword from "./components/NewPassword";
 import OrderHistory from "./components/OrderHistory";
 import UserProfile from "./components/UserProfile";
+import FoodSearch from "./components/FoodSearch";
 import { fService } from "./services/fService";
 import {useFood} from "./contexts/FoodContext"
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <HeaderMenu />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path={"/search"} component={FoodSearch}/>
         <Route path="/menu" component={Menu} />
         <Route path="/delivery" component={Delivery} />
         <Route path="/search" component={Search} />

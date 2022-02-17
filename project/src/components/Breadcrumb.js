@@ -1,14 +1,16 @@
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import BreadcrumbItem from "react-bootstrap/esm/BreadcrumbItem";
+import "../css/breadcrumb.css";
+
 
 function BreadcrumbComponent(props){
     return(
         <div className="mt-5" id="breadcrumb">
       <Breadcrumb>
-        <Breadcrumb.Item className="text-orange"> Хайлт </Breadcrumb.Item>
+        <Breadcrumb.Item className="text-orange"> Хайлт</Breadcrumb.Item>
         <BreadcrumbItem>
           {" "}
-          <img src="/image/arrowRight.svg" alt="" />
+          <img src="/image/arrowRight.svg" alt="right" />
         </BreadcrumbItem>
         <Breadcrumb.Item className="text-dark">
           {props.value.toUpperCase()}

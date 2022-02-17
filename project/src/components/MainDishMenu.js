@@ -23,6 +23,7 @@ function MainDishMenu() {
           return (
             <Card
             data= {data}
+            key = {data.name}
             />
           );
         })}
