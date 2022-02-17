@@ -22,6 +22,7 @@ function Sales() {
         {sale.map((i) => (
           <Card
           data = {i}
+          key = {i.name}
             // img={i.img}
             // name={i.name}
             // discountPrice={i.discountPrice}

@@ -8,16 +8,6 @@ const Card = (props) => {
 
     const [showModal, setShowModal] = useState(false)
     const [foods] = useFood()
-    const [mainMenu, setMainMenu] = useState([]);
-    useEffect(()=>{
-      setMainMenu(
-        foods
-        .filter((p)=>{
-          return p.category === "Үндсэн хоол"
-        })
-        // .slice(0,4)
-      )
-    },[foods])
     let cards = props.data.sales ? (
         <div className="card"
         >

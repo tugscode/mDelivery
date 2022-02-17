@@ -25,6 +25,7 @@ function Desserts() {
           return (
             <Card
               data = {data}
+              key= {data}
             />
           );
         })}

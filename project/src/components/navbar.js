@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "../css/navbar.css";
+import "../css/navbar.css"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { NavLink, Switch } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import CartSidebar from "./CartSidebar";
 import { useUser } from "../contexts/UserContext";
@@ -73,7 +74,7 @@ const HeaderMenu = () => {
               <div className="dropMenuImg">
                 <img src="/icons/market.svg" alt="" />
               </div>
-              <a href="#" className="dropMenuText">Миний захиалга</a>
+              <a href="/" className="dropMenuText">Миний захиалга</a>
             </div>
             <img className="seeMore" src="/icons/seemore.svg" alt="#" />
           </div>
@@ -109,8 +110,8 @@ const HeaderMenu = () => {
               exact
               to="/"
             >
-              <img className="logoImg" src="/img/img.png" />
-              <a className="logoText">Food Delivery</a>
+              <img className="logoImg" src="/img/img.png" alt="img"/>
+              <a href="/" className="logoText">Food Delivery</a>
             </NavLink>
           </div>
           <ul className="menu" id="basic-navbar-nav">
@@ -131,14 +132,14 @@ const HeaderMenu = () => {
             </li>
           </ul>
           <div className="icons">
-            <input
+            {/* <input
               className="searchBox"
               type="text"
               placeholder="&#128269; Хайх"
-            />
-              {/* <SearchBar/> */}
-            <img className="searchIcon" src="/icons/searchicon.svg" />
-            <img className="mobileUser" src="/icons/mobileuser.svg" />
+            /> */}
+              <SearchBar/>
+            {/* <img className="searchIcon" src="/icons/searchicon.svg"  alt="img"/> */}
+            <img className="mobileUser" src="/icons/mobileuser.svg" alt="img"/>
             <ul className="userBusket">
               <li className="userBusketList">
                 <div className="userBusketElement">
@@ -147,14 +148,6 @@ const HeaderMenu = () => {
                   <CartSidebar />
                 </div>
               </li>
-              {/* <li className="userBusketList">
-                <NavLink to="/login">
-                  <div className="userBusketElement">
-                    <img src="/icons/usericon.svg" />
-                    <a href="">Нэвтрэх</a>
-                  </div>
-                </NavLink>
-              </li> */}
               <li className="userBusketList">
                 {user ? (
                   <Dropdown onSelect={handleSelect} >
@@ -178,8 +171,8 @@ const HeaderMenu = () => {
                 ) : (
                   <NavLink to="/login">
                     <div className="userBusketElement">
-                      <img src="/icons/usericon.svg" />
-                      <a href="">Нэвтрэх</a>
+                      <img src="/icons/usericon.svg" alt="usericon" />
+                      <a href="/">Нэвтрэх</a>
                     </div>
                   </NavLink>
                 )}
