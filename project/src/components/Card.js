@@ -21,7 +21,7 @@ const Card = (props) => {
     let cards = props.data.sales ? (
         <div className="card"
         >
-            <img src={ "https://mstars-fooddelivery.s3.ap-southeast-1.amazonaws.com" + props.data.image} alt="img" />
+            <img src={ "https://mtars-fooddelivery.s3.ap-southeast-1.amazonaws.com" + props.data.image} alt="img" />
             <div className="badge">{props.data.discount}%</div>
             <p>{props.data.name}</p>
             <div class="middle">
@@ -36,7 +36,7 @@ const Card = (props) => {
     ) : (
         <div className="card"
         >
-            <img src={"https://mstars-fooddelivery.s3.ap-southeast-1.amazonaws.com" + props.data.image} alt="img"/>
+            <img src={"https://mtars-fooddelivery.s3.ap-southeast-1.amazonaws.com" + props.data.image} alt="img"/>
             <div class="middle">
                 <img className="hoverImg" src="/icons/whiteMarket.svg" alt="hover" />
                 <div class="hoverText">Сагслах</div>

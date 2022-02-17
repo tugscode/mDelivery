@@ -8,6 +8,7 @@ export function useFood(){
 
 export const FoodProvider = (props)=>{
     const [foods , setFoods] = useState([])
+    console.log(foods)
     useEffect(()=>{
         fService
         .getAllFood()
