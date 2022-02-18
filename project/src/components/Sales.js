@@ -11,7 +11,7 @@ function Sales() {
     setSale(
       foods
       .filter((p)=>{
-        return p.category === "Амттан"
+        return p.discount !== 0
       })
       .slice(0 , 4)
     )

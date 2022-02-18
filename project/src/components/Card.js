@@ -8,7 +8,7 @@ const Card = (props) => {
 
     const [showModal, setShowModal] = useState(false)
     const [foods] = useFood()
-    let cards = props.data.sales ? (
+    let cards = props.data.discount ? (
         <div className="card"
         >
             <img src={ "https://mtars-fooddelivery.s3.ap-southeast-1.amazonaws.com" + props.data.image} alt="img" />
