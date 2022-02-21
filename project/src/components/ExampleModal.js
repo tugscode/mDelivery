@@ -1,9 +1,20 @@
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap';
 import '../css/modal.css'
 import AddFood from './AddFood';
+import { useFood } from "../contexts/FoodContext";
 function TestModal(props) {
     const [show, setShow] = useState(true);
+    const [foods] = useFood()
+  useEffect(()=>{
+    setShow(
+      foods
+      .filter((p)=>{
+        return p.discount !== 0
+      })
+    )
+  },[foods])
+
     const handleClose = () => {
         setShow(false);
         props.showHandler(false);

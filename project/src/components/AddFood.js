@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/addfood.css";
+import { useFood } from "../contexts/FoodContext";
 
 const AddFood = () => {
   const [count, setCount] = useState(1);
