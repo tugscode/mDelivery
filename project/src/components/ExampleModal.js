@@ -1,41 +1,37 @@
-import { useState , useEffect } from 'react'
-import { Modal, Button } from 'react-bootstrap';
+import { useEffect, useState} from 'react'
+import { Modal} from 'react-bootstrap';
 import '../css/modal.css'
 import AddFood from './AddFood';
 import { useFood } from "../contexts/FoodContext";
 function TestModal(props) {
+    const {data, showHandler} = props
+   
     const [show, setShow] = useState(true);
-    const [foods] = useFood()
-  useEffect(()=>{
-    setShow(
-      foods
-      .filter((p)=>{
-        return p.discount !== 0
-      })
-    )
-  },[foods])
 
     const handleClose = () => {
         setShow(false);
-        props.showHandler(false);
+        showHandler(false);
     }
-    const handleShow = () => setShow(true);
-    let price = props.data.sales ? <div className='d-flex'><div className="modalPrice">{new Intl.NumberFormat().format(props.data.price - props.data.price * props.data.percent / 100)}₮ </div><strike className="strike-dark">{new Intl.NumberFormat().format(props.data.price)}₮ </strike> </div> : <div className='modalPrice'>{props.data.price}</div>
-    return (
+  
+ 
+  
+     let price = data.data.discount ? <div className='d-flex'><div className="modalPrice">{new Intl.NumberFormat().format(data.data.price - data.data.price * data.data.discount / 100)}₮ </div><strike className="strike-dark">{new Intl.NumberFormat().format(data.data.price)}₮ </strike> </div> : <div className='modalPrice'>{data.data.price}₮</div>
+    
+     return (
         <>
             <Modal dialogClassName="modal-dialog" show={show} onHide={handleClose} centered>
                 <div className=' my-modal '>
-                    <img className='modalimg' src={props.data.img} alt=""
+                    <img className='modalimg' src={"https://mtars-fooddelivery.s3.ap-southeast-1.amazonaws.com" + data.data.image} alt="img"
                     />
                     <div className='modalMain'>
                         <div className='modalContent row '>
                             <div className='NameAndPrice'>
-                                <div className='modalHeader'>{props.data.name}</div>
+                                <div className='modalHeader'>{data.data.name}</div>
                                 {price}
                             </div>
                             <div>
                                 <h5 className='modalHeader'>Орц</h5>
-                                <p className='modalIngredients'>{props.data.ingredients}</p>
+                                <p className='modalIngredients'>{data.data.ingredients}</p>
                             </div>
 
                             <AddFood />
@@ -44,6 +40,7 @@ function TestModal(props) {
                     <button className='closeButton' onClick={handleClose}>x</button>
                 </div>
             </Modal>
+            
         </>
     );
 }
