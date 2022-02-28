@@ -1,8 +1,7 @@
-import { useEffect, useState} from 'react'
+import {useState} from 'react'
 import { Modal} from 'react-bootstrap';
 import '../css/modal.css'
 import AddFood from './AddFood';
-import { useFood } from "../contexts/FoodContext";
 function TestModal(props) {
     const {data, showHandler} = props
    
