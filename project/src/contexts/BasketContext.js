@@ -11,7 +11,7 @@ export const BasketProvider = (props) => {
         if(localStorage.getItem("userInfo")){
             const data = JSON.parse(localStorage.getItem("userInfo"))
             setBasket({
-                 userEmail: data.userEmail,
+                 email: data.email,
             })
         }
     }, [])

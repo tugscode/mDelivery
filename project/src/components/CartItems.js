@@ -1,46 +1,100 @@
-import React, {useState}from "react";
+import React, {useEffect, useState}from "react";
 import Meal from "../img/meal.png"
 import DeleteMeal from "../img/delete_meal.png"
 import "../css/cartItems.css"
+import { basketService } from "../services/basketService";
+import { NavLink} from "react-router-dom";
 
 function CartItems() {
     const [count, setCount] = useState(1);
+    const [first, setFirst] = useState({ success: false });
+    const [changed, setChanged] = useState(false);
     const handleCounter = (num) => {
         setCount((count) => (count > 0 ? (count += num) : (count = 1)));
       };
     
-      const sendFoodCount = (count, size) => {
-        console.log("Order:", count, 'foodId,', "portion:", size);
-      };
-    return (
-        <div className="main-body">
-            <div className="cart-items">
+    useEffect(()=>{
+      basketService
+      .getBasketInfo()
+      .then((res)=> res.json())
+      .then((data)=> setFirst(data))
+    },[changed])
+    
+    const deletedBasket = async (d)=>{
+      basketService
+      .deleteBasket(d)
+      .then((data)=> data.json())
+      .then((data)=>{
+        if(data.success){
+          setChanged(!changed)
+        }
+      })
+    }
+    const updateBasket = (q, id)=>{
+      basketService.addItem({count: q, food_id: id}).then((data)=>{
+        if (data.success){
+          setChanged(!changed)
+        }
+      })
+    }
 
-            <div className="thumbnail">
-                <img src={Meal} alt="" className="item-image" />
-            </div>
-            <div className="details">
-                <p className="cart-item-name">Хулууны зутан</p>
-                <p className="cart-item-price">6,800₮</p>
-                <div className="buttons">
-                <div className="modalCounterButtons">
-        <button className="counterButton" onClick={() => handleCounter(-1)}>
-          -
-        </button>
-        <p className="counterNumber "> {count} </p>
-        <button className="counterButton" onClick={() => handleCounter(1)}>
-          +
-        </button>
-      </div>
+    const el = first.baskets
+    let summit = 0
+  
+    return (
+      <div className="main-body">
+      {first.success === true ? (
+        el.map((data) => {
+          summit += data.product.price * data.quantity;
+          return (
+            <div>
+              <div className="cart-items">
+                <div className="thumbnail">
+                  <img
+                    src={
+                      "https://mtars-fooddelivery.s3.ap-southeast-1.amazonaws.com" +
+                      data.product.image
+                    }
+                    alt=""
+                    className="item-image"
+                  />
                 </div>
+                <div className="details">
+                  <p className="cart-item-name">{data.product.name}</p>
+                  <p className="cart-item-price">{data.product.price}</p>
+                  <div className="buttons">
+                    <button onClick={() => updateBasket(-1, data.product._id)}>
+                      -
+                    </button>
+                    <p>{data.quantity}</p>
+                    <button
+                      onClick={() => {
+                        updateBasket(1, data.product._id);
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div className="close-button">
+                  <img
+                    src={DeleteMeal}
+                    onClick={() => deletedBasket(data)}
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
-            <div className="close-button">
-                <img src={DeleteMeal} alt="" />
-            </div>
-            </div>
+          );
+        })
+      ) : (
+        <div>zahialga achaallaj baina</div>
+      )}
             <div className="order-section">
-                <p className="totalPrice">Нийт: 6,800₮</p>
+                <p className="totalPrice">{summit}₮</p>
+              <NavLink to="/address">
                 <button className="order-button">Захиалах</button>
+              </NavLink>
             </div>
         </div>
     )
