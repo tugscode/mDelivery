@@ -22,16 +22,6 @@ const Register = () => {
     e.target.password.value !== e.target.passwordRepeat.value
       ? alert("Passwords don't match")
       : alert("Passowrds match ! Sending to backend");
-
-    console.log(
-      "Register request:",
-      "Email:",
-      e.target.email.value,
-      "Password:",
-      e.target.password.value,
-      "Repeat:",
-      e.target.password.value === e.target.passwordRepeat.value
-    );
   };
 
   return (

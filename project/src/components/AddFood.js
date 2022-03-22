@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import "../css/addfood.css";
-import {
-  basketService,
-  getBasketinfo,
-  addItem,
-} from "../services/basketService";
+import {addItem} from "../services/basketService";
 
 const AddFood = (props) => {
   const [count, setCount] = useState(1);
   const [portion, setPortionSize] = useState(1);
   const [activeButton, setActiveButton] = useState("add1");
+  const [isLoading , setIsLoading] = useState(true)
 
   const handlePortion = (size) => {
     setPortionSize(() => size);
@@ -25,9 +22,6 @@ const AddFood = (props) => {
     setCount((count) => (count > 0 ? (count += num) : (count = 1)));
   };
  
-  const sendFoodCount = (count, size) => {
-    console.log("Order:", count, "foodId", "portion:", size);
-  };
 
   return (
     <div className="add-food">
@@ -69,10 +63,7 @@ const AddFood = (props) => {
           +
         </button>
       </div>
-
-      <button className="orderButton" onClick={itemAdder}>
-        Захиалах
-      </button>
+      <button className="orderButton" onClick={itemAdder}> Захиалах</button>
     </div>
   );
 };

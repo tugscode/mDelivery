@@ -33,7 +33,7 @@ const AddressVertification = () => {
             .then((res) => res.json())
             .then((data) => setfirst(data));
     }, [changed]);
-    console.log(first.baskets)
+
     const el = first.baskets
     let summit = 0
     return (

@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import googlemaps from '../img/maps.jpeg'
 import '../css/delivery.css';
 import DeliveryZone from './Map';
 
-//conflict tei holbootoi aldaa zasahiin tuld end xomment bichij bn
 const Delivery = () => {
     const [house, setData] = useState([])
 
@@ -14,7 +12,6 @@ const Delivery = () => {
                 .then(response => response.json())
                 .then(data => {
                     setData(data)
-                    console.log(house)
                 })
         }
         houseData()

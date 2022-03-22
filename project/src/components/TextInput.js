@@ -31,9 +31,6 @@ const TextInput = (props) => {
     }
   }, [isHidden]);
 
-  // const checkValue = (data) => {
-  //   console.log(data)
-  // }
 
   let defInput = (
     <div className="input-container d-flex">

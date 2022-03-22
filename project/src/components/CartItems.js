@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Meal from "../img/meal.png";
 import DeleteMeal from "../img/delete_meal.png";
 import "../css/cartItems.css";
 import { basketService } from "../services/basketService";
-import { NavLink, Switch } from "react-router-dom";
-import Delivery from "./Delivery";
+import { NavLink} from "react-router-dom";
+import { Spinner} from "react-bootstrap";
 function CartItems() {
   const [first, setfirst] = useState({ success: false });
   const [changed, setChanged] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     basketService
@@ -41,7 +41,7 @@ function CartItems() {
     <div className="main-body">
       {first.success === true ? (
         el.map((data) => {
-          console.log(data);
+
           if (data.product.discount === 0) {
             summit += data.product.price * data.quantity;
           } else {
@@ -60,7 +60,7 @@ function CartItems() {
                       "https://mtars-fooddelivery.s3.ap-southeast-1.amazonaws.com" +
                       data.product.image
                     }
-                    alt=""
+                    alt="img"
                     className="item-image"
                   />
                 </div>
@@ -71,6 +71,7 @@ function CartItems() {
                       ? data.product.price
                       : (data.product.price / 100) *
                         (100 - data.product.discount)}
+                    ₮
                   </p>
                   <div className="buttons">
                     <button onClick={() => updateBasket(-1, data.product._id)}>
@@ -90,7 +91,7 @@ function CartItems() {
                   <img
                     src={DeleteMeal}
                     onClick={() => deletedBasket(data)}
-                    alt=""
+                    alt="delete"
                   />
                 </div>
               </div>
@@ -98,12 +99,22 @@ function CartItems() {
           );
         })
       ) : (
-        <div>zahialga achaallaj baina</div>
+        <div>
+          {isLoading ? (
+            <h3 className="loading">
+              {" "}
+              <span role="img" aria-label="">
+                Loading <Spinner animation="grow" variant="warning" />
+              </span>
+            </h3>
+          ) : (
+            {}
+          )}
+        </div>
       )}
       <div className="order-section">
         <p className="totalPrice">{summit}₮</p>
         <NavLink to="/address">
-
           <button className="order-button">Захиалах</button>
         </NavLink>
       </div>
