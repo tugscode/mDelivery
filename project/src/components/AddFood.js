@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "../css/addfood.css";
-import { addItem} from "../services/basketService"
-// import { useFood } from "../contexts/FoodContext";
+import {
+  basketService,
+  getBasketinfo,
+  addItem,
+} from "../services/basketService";
 
 const AddFood = (props) => {
   const [count, setCount] = useState(1);
@@ -11,21 +14,20 @@ const AddFood = (props) => {
   const handlePortion = (size) => {
     setPortionSize(() => size);
   };
+  const itemAdder = () => {
+    addItem({
+      count: count,
+      food_id: props.data._id,
+    });
+  };
 
   const handleCounter = (num) => {
     setCount((count) => (count > 0 ? (count += num) : (count = 1)));
   };
-
-  const itemAdder = ()=>{
-    addItem({
-      count: count,
-      food_id: props.data_id,
-    })
-  }
-
-  // const sendFoodCount = (count, size) => {
-  //   console.log("Order:", count, 'foodId,', "portion:", size);
-  // };
+ 
+  const sendFoodCount = (count, size) => {
+    console.log("Order:", count, "foodId", "portion:", size);
+  };
 
   return (
     <div className="add-food">
@@ -34,9 +36,8 @@ const AddFood = (props) => {
         <div className="modalSizeButtons">
           <button
             id="add1"
-            className={`sizeButton ${
-              activeButton === "add1" ? "activeButton" : ""
-            }`}
+            className={`sizeButton ${activeButton === "add1" ? "activeButton" : ""
+              }`}
             onClick={(event) => {
               setActiveButton("add1");
               handlePortion(1);
@@ -46,9 +47,8 @@ const AddFood = (props) => {
           </button>
           <button
             id="add2"
-            className={`sizeButton ${
-              activeButton === "add2" ? "activeButton" : ""
-            }`}
+            className={`sizeButton ${activeButton === "add2" ? "activeButton" : ""
+              }`}
             onClick={(event) => {
               setActiveButton("add2");
               handlePortion(2);
@@ -70,10 +70,7 @@ const AddFood = (props) => {
         </button>
       </div>
 
-      <button
-        className="orderButton"
-        onClick={itemAdder}
-      >
+      <button className="orderButton" onClick={itemAdder}>
         Захиалах
       </button>
     </div>

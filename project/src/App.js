@@ -20,6 +20,7 @@ import NewPassword from "./components/NewPassword";
 import OrderHistory from "./components/OrderHistory";
 import UserProfile from "./components/UserProfile";
 import FoodSearch from "./components/FoodSearch";
+import AddressVertification from "./components/AddressVerification";
 import { fService } from "./services/fService";
 import {useFood} from "./contexts/FoodContext"
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/pageInsideMenu" component={PageInsideMenu} />
         <Route path="/forget" component={ForgetPassword} />
         <Route path="/newpassword" component={NewPassword} />
+        <Route path="/address" component={AddressVertification} />
         <Route path="/orderhistory" component={OrderHistory} />
         <Route path="/userProfile" component={UserProfile}/>
         <Route component={NotFound} />

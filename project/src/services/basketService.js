@@ -1,4 +1,5 @@
 export const addItem = async (props) => {
+    console.log(props)
     const token = localStorage.getItem("token");
     const data = JSON.parse(localStorage.userInfo);
 
